@@ -1,5 +1,6 @@
 #include <stdint.h>
 
+#include "mpconfigboard.h"
 
 /****************************** user define ************************************/
 // python grammar
@@ -132,17 +133,11 @@
 
 // type definitions for the specific machine
 
-//typedef intptr_t mp_int_t; // must be pointer size
-//typedef uintptr_t mp_uint_t; // must be pointer size
-//typedef long mp_off_t;
+typedef intptr_t mp_int_t; // must be pointer size
+typedef uintptr_t mp_uint_t; // must be pointer size
+typedef long mp_off_t;
 #define UINT_FMT "%lu"
 #define INT_FMT "%ld"
-
-typedef int32_t mp_int_t; // must be pointer size
-typedef uint32_t mp_uint_t; // must be pointer size
-typedef long mp_off_t;
-//#define mp_type_fileio                      mp_type_vfs_lfs1_fileio
-//#define mp_type_textio                      mp_type_vfs_lfs1_textio
 
 
 #if MICROPY_ENABLE_GC

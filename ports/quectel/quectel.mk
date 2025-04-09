@@ -1,3 +1,4 @@
+include plat.mk
 
 PLAT_DFLAGS = $(addprefix -D,$(DFLAGS))
 PLAT_CFLAGS = $(QUEC_CFLAGS)

@@ -5,15 +5,7 @@ include ../../py/mkenv.mk
 include mpconfigport.mk
 include quectel.mk
 
-CROSS = 1
-
-ifeq ($(CROSS), 1)
 CFLAGS = $(INC) $(QUEC_MOD_CFLAGS) $(PLAT_CFLAGS) $(PLAT_DFLAGS) $(COPT)
-else
-LD = gcc
-CFLAGS = $(INC) -Wall -Werror -Wdouble-promotion -Wfloat-conversion -std=c99 $(COPT)
-LDFLAGS = -Wl,-Map=$@.map,--cref -Wl,--gc-sections
-endif
 
 CSUPEROPT = -Os # save some code space
 
@@ -36,11 +28,8 @@ endif
 include $(TOP)/py/py.mk
 include $(TOP)/extmod/extmod.mk
 
-ifeq ($(CROSS), 1)
 CROSS_COMPILE ?= arm-none-eabi-
-endif
 
-GIT_SUBMODULES += lib/micropython-lib
 
 INC += -I.
 INC += -I$(TOP)
@@ -103,11 +92,7 @@ SRC_QSTR += $(SRC_MOD) $(SRC_MOD_CXX) $(SHARED_SRC_C) $(EXTMOD_SRC_C)
 OBJ += $(PY_CORE_O) $(addprefix $(BUILD)/, $(SRC_C:.c=.o))
 OBJ += $(addprefix $(BUILD)/, $(SRC_CXX:.cpp=.o))
 
-ifeq ($(CROSS), 1)
 all: $(BUILD)/firmware.a
-else
-all: $(BUILD)/firmware.elf
-endif
 
 $(BUILD)/_frozen_mpy.c: frozentest.mpy $(BUILD)/genhdr/qstrdefs.generated.h
 	$(ECHO) "MISC freezing bytecode"

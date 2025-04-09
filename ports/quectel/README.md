@@ -81,10 +81,8 @@ $ make submodules
 $ make
 ```
 
-This will produce a combined `firmware.a` image in the `build/`
-subdirectory(The compiled MicroPython library will be used by HeliosSDK to build a complete firmware package).
-
-To flash the firmware, you need to fully build the entire firmware package through heliossdk.
+This will produce a combined `firmware.a` lib in the `build/`
+subdirectory directly.The compiled MicroPython library will be used by HeliosSDK to build a complete firmware package. Of course, you can also build the entire firmware directly using the following method.
 
 *Check the usage of the helios compilation commands*
 
@@ -107,16 +105,16 @@ These are common commands used in various situations:
 
 *Compile the firmware*
 
-Taking the EC200UEU_AB module as an example, type the following command in the command line and press  "**Enter**":
+Taking the EG915UEC_AC module as an example, type the following command in the command line and press  "**Enter**":
 ```
-helios make services/micropython @EC200UEU_AB EC200UEUABR03A01M08
+helios make services/micropython @EG915UEC_AC EG915UECACR03A01M08
 ```
 
 - `helios`: Trigger the compilation process.
 - `make`: Compile the firmware.
 - `services/micropython`: Application entry address (relative to the SDK root directory, according to the requirements of the host system, the Win32 platform is \ and the Linux platform is /). It can be adjusted according to the specific location of MicroPython.
-- `@EC200UEU_AB`: Specify the target module model. You need to modify it according to your actual model.
-- `EC200UEUABR03A01M08`: Firmware version name, which can be omitted. You need to modify it according to your actual model.
+- `@EG915UEC_AC`: Specify the target module model. You need to modify it according to your actual model.
+- `EG915UECACR03A01M08`: Firmware version name, which can be omitted. You need to modify it according to your actual model.
 
 *Check the compilation target*
 

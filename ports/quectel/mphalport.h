@@ -42,10 +42,6 @@ typedef struct Input_ListNode
 
 void _add_list_node();
 void _delete_list_node();
-void mp_hal_delay_ms(uint32_t ms);
-void mp_hal_delay_us(uint32_t us);
-uint32_t mp_hal_ticks_ms(void);
-uint32_t mp_hal_ticks_us(void);
 mp_uint_t mp_hal_ticks_cpu(void);
 
 void mp_mthread_sleep_deal_init(void);
@@ -58,7 +54,6 @@ int mp_hal_stdio_init(void);
 
 int mp_hal_stdin_rx_chr(void);
 
-void mp_hal_delay_ms(uint32_t ms);
 void mp_hal_port_open(uint8_t state);
 
 void mp_hal_set_interrupt_char(int c);
