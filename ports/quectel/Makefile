@@ -1,5 +1,9 @@
 TOP := ../..
+ifneq ($(HeliosSDK_PATH),)
+ROOT := $(HeliosSDK_PATH)
+else
 ROOT := $(TOP)/../..
+endif
 
 include ../../py/mkenv.mk
 include mpconfigport.mk
@@ -23,10 +27,14 @@ QSTR_DEFS = qstrdefsport.h
 # MicroPython feature configurations
 MICROPY_ROM_TEXT_COMPRESSION ?= 1
 
-
 FROZEN_MANIFEST = $(QUEC_PY_MOD)
 
+ifeq ($(OS),Windows_NT)
 export MICROPY_MPYCROSS = $(TOP)/mpy-cross/build/mpy-cross.exe
+else	
+export MICROPY_MPYCROSS = $(TOP)/mpy-cross/build/mpy-cross
+endif
+
 # include py core make definitions
 include $(TOP)/py/py.mk
 include $(TOP)/extmod/extmod.mk
