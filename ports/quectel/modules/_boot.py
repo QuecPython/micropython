@@ -40,6 +40,7 @@ def _repl_enable():
             repl_data = ujson.dumps({"replFlag": 0})
             fd.write(repl_data)
 
+
 try:
     udev = None
     try:
