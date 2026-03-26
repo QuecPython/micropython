@@ -50,7 +50,7 @@ try:
     try:
         udev = os.VfsLfs2(dev)
         os.mount(udev, "/")
-    except Exception as e:
+    except Exception:
         os.VfsLfs2.mkfs(dev)
         udev = os.VfsLfs2(dev)
         os.mount(udev, "/")
